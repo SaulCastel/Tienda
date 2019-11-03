@@ -16,6 +16,7 @@ public class VntProd extends javax.swing.JFrame {
      */
     public VntProd() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -39,6 +40,11 @@ public class VntProd extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jButton1.setText("AGREGAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jButton2.setText("MODIFICAR");
@@ -50,6 +56,11 @@ public class VntProd extends javax.swing.JFrame {
         jButton4.setText("VER");
 
         jButton5.setText("VOLVER");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,6 +117,18 @@ public class VntProd extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AgrProd agregar = new AgrProd();
+        this.dispose();
+        agregar.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        MenuAdmin volver = new MenuAdmin();
+        this.dispose();
+        volver.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Projects/Java/Tienda/src/Admin/MenuAdmin.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Admin/VerUsuarios.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Usuarios/TCredito.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Usuarios/Login.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Admin/AgrProd.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/tienda/Tienda.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Admin/VntProd.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Usuarios/Registro.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Admin/MenuAdmin.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Admin/VntProd.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Admin/AgrProd.java</file>
         </group>
     </open-files>
 </project-private>

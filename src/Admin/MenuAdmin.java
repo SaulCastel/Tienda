@@ -41,6 +41,11 @@ public class MenuAdmin extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jButton1.setText("PRODUCTOS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jButton4.setText("USUARIOS");
@@ -120,6 +125,12 @@ public class MenuAdmin extends javax.swing.JFrame {
         this.dispose();
         ver.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        VntProd prod = new VntProd();
+        this.dispose();
+        prod.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
