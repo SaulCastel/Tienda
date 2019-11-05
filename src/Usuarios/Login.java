@@ -41,7 +41,7 @@ private Tienda principal = new Tienda();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("¡BIENVENIDO!");
 
         jLabel2.setText("Nombre de Usuario:");

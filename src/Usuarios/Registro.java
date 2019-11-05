@@ -5,6 +5,8 @@
  */
 package Usuarios;
 
+import Estructuras.Nodo;
+import java.awt.Color;
 import tienda.Tienda;
 
 /**
@@ -195,6 +197,7 @@ private Tienda principal = new Tienda();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        boolean copia = false;
         if (nombres.getText().equals("") || apellidos.getText().equals("") ||
             correo.getText().equals("") || usuario.getText().equals("") ||
             contra.getText().equals("") || tarjeta.getText().equals("") ||
@@ -203,14 +206,31 @@ private Tienda principal = new Tienda();
             jOptionPane1.showMessageDialog(this, "DEBES INGRESAR TODOS LOS CAMPOS");
         }
         else{
-            TCredito TC = 
-            new TCredito(tarjeta.getText(), Integer.parseInt(cvc.getText()),
-            vencimiento.getText());
-            Usuario nuevo = 
-            new Usuario(nombres.getText(),  apellidos.getText(), 
-            correo.getText(), usuario.getText(), contra.getText(), TC);
-            principal.nuevoUser(nuevo);
-            jOptionPane1.showMessageDialog(this, "NUEVO USUARIO REGISTRADO");
+            Nodo<Usuario> iterador = principal.usuarios.cabeza();
+            while(iterador != null){
+                if(iterador.contenido().getUsuario().equals(usuario.getText())
+                        || iterador.contenido().getCorreo().equals(correo.getText()))
+                {
+                    jOptionPane1.showMessageDialog(this, "USUARIO YA EXISTE");
+                    usuario.setText("");
+                    correo.setText("");
+                    copia = true;
+                    iterador = null;
+                }
+                else{
+                    iterador = iterador.siguiente();
+                }
+            }
+            if (!copia){
+                TCredito TC = 
+                new TCredito(tarjeta.getText(), Integer.parseInt(cvc.getText()),
+                vencimiento.getText());
+                Usuario nuevo = 
+                new Usuario(nombres.getText(),  apellidos.getText(), 
+                correo.getText(), usuario.getText(), contra.getText(), TC);
+                principal.nuevoUser(nuevo);
+                jOptionPane1.showMessageDialog(this, "NUEVO USUARIO REGISTRADO");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

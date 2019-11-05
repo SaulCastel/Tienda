@@ -54,6 +54,11 @@ public class VntProd extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jButton4.setText("VER");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("VOLVER");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +134,12 @@ public class VntProd extends javax.swing.JFrame {
         this.dispose();
         volver.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        VerProd productos = new VerProd();
+        this.dispose();
+        productos.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

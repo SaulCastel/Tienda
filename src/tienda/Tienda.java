@@ -5,15 +5,24 @@
  */
 package tienda;
 
+import Estructuras.CircularSimp;
 import Estructuras.ListaSimple;
 import Estructuras.Nodo;
 import Usuarios.Login;
 import Usuarios.Usuario;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Tienda {
-
+    private static String rutaProd = "Ningun Archivo";
+    public static CircularSimp<Producto> productos = new CircularSimp();
     public static ListaSimple<Usuario> usuarios = new ListaSimple();
-
+    private static FileReader archivo;
+    private static BufferedReader buffer;
     public static void main(String[] args) {
         Login inicio = new Login();
         inicio.setVisible(true);
@@ -62,5 +71,41 @@ public class Tienda {
 
     public void nuevoUser(Usuario nuevo) {
         usuarios.nuevo(nuevo);
+    }
+    public static void cargarTienda (){
+        try {
+            archivo = new FileReader(rutaProd);
+            buffer = new BufferedReader(archivo);
+            String linea = buffer.readLine();;
+            String[] datos;
+            while(linea != null){
+                datos = linea.split(",");
+                Producto agregar = 
+                    new Producto(datos[0],datos[1],datos[2],datos[3],datos[4],datos[5]);
+                productos.nuevo(agregar);
+                System.out.println(linea);
+                linea = buffer.readLine();
+            }
+        } catch (IOException ex) {
+            System.out.println("Hubo problemas hijo");
+        } finally{
+            try{
+                archivo.close();
+                buffer.close();
+            }catch(IOException ex){
+                ex.printStackTrace();
+            }
+        }
+            
+    }
+    
+    public Producto buscarProd (int num){
+        return productos.indice(num);
+    }
+    public static void setRuta (String ruta){
+        rutaProd = ruta;
+    }
+    public static String getRuta() {
+        return rutaProd;
     }
 }
