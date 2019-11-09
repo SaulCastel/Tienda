@@ -29,6 +29,7 @@ private DefaultTableModel modelo;
     }
 
     private void llenarTabla(){
+        modelo.setRowCount(0);
         Nodo<Producto> inicio = principal.productos.cabeza();
         Nodo<Producto> iterador = inicio;
         if(iterador != null){

@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Projects/Java/Tienda/src/Admin/VerProd.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Admin/VerUsuarios.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Admin/DetalleProd.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/tienda/Producto.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Admin/AgrProd.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/tienda/Tienda.java</file>
-            <file>file:/F:/Projects/Java/Tienda/src/Estructuras/CircularSimp.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Admin/VerProd.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/tienda/Tienda.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Estructuras/CircularSimp.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Estructuras/Nodo.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Admin/EliminarProd.java</file>
         </group>
     </open-files>
 </project-private>

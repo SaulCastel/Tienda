@@ -25,13 +25,42 @@ public class CircularSimp<tipo> {
         else{
             Nodo<tipo> iterador = inicio;
             tipo elemento = null;
-            for (int i = 0; i < indice; i++) {
-                elemento = iterador.contenido();
+            int contador = 1;
+            while(contador < indice){
                 iterador = iterador.siguiente();
+                contador++;
             }
+            elemento = iterador.contenido();
             return elemento;
         }
     }
+    
+    public void eliminar(int indice){
+        if (elementos == 1){
+            reiniciar();
+        }
+        else if (indice == 1 && elementos != 1){
+            Nodo<tipo> viejo = inicio;
+            Nodo<tipo> iterador = viejo;
+            inicio = inicio.siguiente();
+            while(iterador.siguiente() != viejo){
+                iterador = iterador.siguiente();
+            }
+            iterador.apuntar(inicio);
+            elementos--;
+        }
+        else {
+            Nodo<tipo> iterador = inicio;
+            int contador = 1;
+            while(contador < indice - 1){
+                    iterador = iterador.siguiente();
+                    contador++;
+            }
+            iterador.apuntar(iterador.siguiente().siguiente());
+            elementos--;
+        }
+    }
+    
     public int cantidad (){return elementos;}
     
     public void nuevo (tipo dato){

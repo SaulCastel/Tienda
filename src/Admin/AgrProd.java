@@ -44,8 +44,8 @@ public class AgrProd extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         jFileChooser1.setCurrentDirectory(new File(System.getProperty("user.home")));
-        jLabel8.setText(rutaTienda);
-        jLabel9.setText(rutaArchivo);
+        labelShop.setText(rutaTienda);
+        labelArch.setText(rutaArchivo);
     }
 
     private ImageIcon imagenLabel(String direccion) {
@@ -80,8 +80,8 @@ public class AgrProd extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        labelShop = new javax.swing.JLabel();
+        labelArch = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         ID = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -148,9 +148,9 @@ public class AgrProd extends javax.swing.JFrame {
 
         jLabel7.setText("Archivo cargado en la tienda:");
 
-        jLabel8.setText("jLabel8");
+        labelShop.setText("jLabel8");
 
-        jLabel9.setText("jLabel9");
+        labelArch.setText("jLabel9");
 
         jLabel10.setText("IDENTIFICADOR");
 
@@ -167,20 +167,12 @@ public class AgrProd extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jSeparator1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,11 +195,19 @@ public class AgrProd extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(imgLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelShop, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelArch, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,11 +221,11 @@ public class AgrProd extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(labelShop))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel9))
+                    .addComponent(labelArch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -414,18 +414,29 @@ public class AgrProd extends javax.swing.JFrame {
             String direccion = seleccion.getAbsolutePath();
             nombreTienda = seleccion.getName();
             rutaArchivo = direccion;
-            jLabel9.setText(direccion);
+            labelArch.setText(direccion);
             jOptionPane1.showMessageDialog(this, "SE HA CARGADO: \n" + nombreTienda);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        principal.setRuta(rutaArchivo);
-        principal.productos.reiniciar();
-        principal.cargarTienda();
-        rutaTienda = rutaArchivo;
-        jLabel8.setText(rutaTienda);
-        jOptionPane1.showMessageDialog(this, "TIENDA AHORA USA: \n" + nombreTienda);
+        boolean aplicar = true;
+        if(rutaArchivo.equals("Ningun Archivo")){
+            jOptionPane1.showMessageDialog(this, "NO HAY NINGUN ARCHIVO CARGADO");
+            aplicar = false;
+        }
+        else if(rutaArchivo.equals(rutaTienda)){
+            jOptionPane1.showMessageDialog(this, "LA TIENDA YA ESTA USANDO ESE ARCHIVO");
+            aplicar = false;
+        }
+        if(aplicar){
+            principal.setRuta(rutaArchivo);
+            principal.productos.reiniciar();
+            principal.cargarTienda();
+            rutaTienda = rutaArchivo;
+            labelShop.setText(rutaTienda);
+            jOptionPane1.showMessageDialog(this, "TIENDA AHORA USA: \n" + nombreTienda);
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
@@ -482,12 +493,12 @@ public class AgrProd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel labelArch;
+    private javax.swing.JLabel labelShop;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField precio;
     private javax.swing.JTextArea ruta;
