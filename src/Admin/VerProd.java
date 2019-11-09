@@ -64,6 +64,7 @@ private DefaultTableModel modelo;
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,7 +146,7 @@ private DefaultTableModel modelo;
             String ID = prod.getID();
             String ruta = prod.getRutaImg();
             DetalleProd ver;
-            ver = new DetalleProd(nombre, desc, precio, exist, ruta,ID);
+            ver = new DetalleProd(nombre, desc, precio, exist, ruta,ID,numtabla + 1);
             this.dispose();
             ver.setVisible(true);
         }

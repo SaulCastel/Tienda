@@ -294,22 +294,24 @@ public class AgrProd extends javax.swing.JFrame {
                 jOptionPane1.showMessageDialog(this, "HACEN FALTA CAMPOS");
             } else {
                 if (rutaArchivo.equals(rutaTienda) && !rutaArchivo.equals("Ningun Archivo") && !rutaTienda.equals("Ningun Archivo")) {
-                    System.out.println("checando copia");
-                    Nodo<Producto> inicio = principal.productos.cabeza();
-                    Nodo<Producto> iterador = inicio;
-                    while (true) {
-                        String IDLista = iterador.contenido().getID();
-                        String IDChequeo = ID.getText().toUpperCase();
-                        System.out.print(IDLista + " - " +IDChequeo + "\n");
-                        if (iterador.contenido().getID().equals(ID.getText().toUpperCase())) {
-                            copia = true;
-                            jOptionPane1.showMessageDialog(this, "ESTE PRODUCTO YA EXISTE");
-                            break;
-                        } else if(iterador.siguiente() != inicio ){
-                            iterador = iterador.siguiente();
-                        } else{
-                            System.out.println("No encontre copias");
-                            break;}
+                    if ( principal.productos.cabeza() != null){
+                        System.out.println("checando copia");
+                        Nodo<Producto> inicio = principal.productos.cabeza();
+                        Nodo<Producto> iterador = inicio;
+                        while (true) {
+                            String IDLista = iterador.contenido().getID();
+                            String IDChequeo = ID.getText().toUpperCase();
+                            System.out.print(IDLista + " - " +IDChequeo + "\n");
+                            if (iterador.contenido().getID().equals(ID.getText().toUpperCase())) {
+                                copia = true;
+                                jOptionPane1.showMessageDialog(this, "ESTE PRODUCTO YA EXISTE");
+                                break;
+                            } else if(iterador.siguiente() != inicio ){
+                                iterador = iterador.siguiente();
+                            } else{
+                                System.out.println("No encontre copias");
+                                break;}
+                        }
                     }
                 } else {
                     CircularSimp<Producto> chequeo = new CircularSimp();

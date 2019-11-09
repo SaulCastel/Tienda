@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Tienda {
-    private static String rutaProd = "/home/saul/Desktop/Calificacion/ProdIdent2.proadd";
+    private static String rutaProd = "C:/Users/Saul/Desktop/Productos/Productos.proadd";
     public static CircularSimp<Producto> productos = new CircularSimp();
     public static ListaSimple<Usuario> usuarios = new ListaSimple();
     private static FileReader archivo;
@@ -79,7 +79,7 @@ public class Tienda {
         try {
             archivo = new FileReader(rutaProd);
             buffer = new BufferedReader(archivo);
-            String linea = buffer.readLine();;
+            String linea = buffer.readLine();
             String[] datos;
             while(linea != null){
                 datos = linea.split(",");
@@ -106,14 +106,11 @@ public class Tienda {
         return productos.indice(num);
     }
     
-    public void elimProd (int num){
-        productos.eliminar(num);
-    }
-    
     public static void setRuta (String ruta){
         rutaProd = ruta;
     }
     public static String getRuta() {
         return rutaProd;
     }
+    
 }

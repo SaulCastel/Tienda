@@ -14,18 +14,19 @@ import javax.swing.ImageIcon;
  */
 public class DetalleProd extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DetalleProd
-     */
-    public DetalleProd(String nombre, String desc, String precio, String exist, String ruta,String identificador) {
+    private String ruta;
+    private int numTabla;
+    public DetalleProd(String nombre, String desc, String precio, String exist, String ruta,String identificador, int numTabla) {
         initComponents();
         setLocationRelativeTo(null);
-        jTextField1.setText(nombre);
-        jTextArea1.setText(desc);
-        jTextField2.setText(precio);
-        jTextField3.setText(exist);
+        this.nombre.setText(nombre);
+        this.desc.setText(desc);
+        this.precio.setText(precio);
+        this.exist.setText(exist);
         ID.setText(identificador);
         imgLabel.setIcon(imagenLabel(ruta));
+        this.ruta = ruta;
+        this.numTabla = numTabla;
     }
 
     private ImageIcon imagenLabel(String direccion){
@@ -41,34 +42,35 @@ public class DetalleProd extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         imgLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        desc = new javax.swing.JTextArea();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        precio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        exist = new javax.swing.JTextField();
         ID = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         imgLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setText("Nombre del producto");
 
-        jTextField1.setEditable(false);
+        nombre.setEditable(false);
 
         jLabel3.setText("Descripción");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        desc.setEditable(false);
+        desc.setColumns(20);
+        desc.setLineWrap(true);
+        desc.setRows(5);
+        jScrollPane1.setViewportView(desc);
 
         jToggleButton1.setText("VOLVER");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,17 +81,22 @@ public class DetalleProd extends javax.swing.JFrame {
 
         jLabel4.setText("PRECIO");
 
-        jTextField2.setEditable(false);
+        precio.setEditable(false);
 
         jLabel5.setText("EXISTENCIAS");
 
-        jTextField3.setEditable(false);
+        exist.setEditable(false);
 
         ID.setEditable(false);
 
         jLabel6.setText("IDENTIFICADOR");
 
         jButton1.setText("MODIFICAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -98,17 +105,17 @@ public class DetalleProd extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(precio, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4)
                     .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
+                    .addComponent(nombre)
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(exist, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
@@ -131,7 +138,7 @@ public class DetalleProd extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -145,8 +152,8 @@ public class DetalleProd extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(exist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel6))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -178,6 +185,15 @@ public class DetalleProd extends javax.swing.JFrame {
         volver.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ModProd mod;
+        mod = new ModProd(nombre.getText(), desc.getText(), precio.getText(),
+                exist.getText(), ruta,ID.getText(),numTabla);
+        this.dispose();
+        mod.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -208,13 +224,15 @@ public class DetalleProd extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DetalleProd("","","","","","").setVisible(true);
+                new DetalleProd("","","","","","",0).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ID;
+    private javax.swing.JTextArea desc;
+    private javax.swing.JTextField exist;
     private javax.swing.JLabel imgLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
@@ -224,10 +242,8 @@ public class DetalleProd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField precio;
     // End of variables declaration//GEN-END:variables
 }

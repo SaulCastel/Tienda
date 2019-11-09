@@ -6,7 +6,11 @@
 package Admin;
 
 import java.awt.Image;
+import java.io.File;
 import javax.swing.ImageIcon;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import tienda.Producto;
+import tienda.Tienda;
 
 /**
  *
@@ -14,18 +18,21 @@ import javax.swing.ImageIcon;
  */
 public class ModProd extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DetalleProd
-     */
-    public ModProd(String nombre, String desc, String precio, String exist, String ruta,String identificador) {
+    Tienda principal = new Tienda();
+    FileNameExtensionFilter imagenes = new FileNameExtensionFilter(
+            "Archivos de imagenes (.jpg/.png)", "jpg", "png");
+    int numLista;
+    public ModProd(String nombre, String desc, String precio, String exist, String ruta,String identificador,int numLista) {
         initComponents();
         setLocationRelativeTo(null);
-        jTextField1.setText(nombre);
-        jTextArea1.setText(desc);
-        jTextField2.setText(precio);
-        jTextField3.setText(exist);
+        this.nombre.setText(nombre);
+        this.desc.setText(desc);
+        this.precio.setText(precio);
+        cantidad.setText(exist);
         ID.setText(identificador);
         imgLabel.setIcon(imagenLabel(ruta));
+        this.ruta.setText(ruta);
+        this.numLista = numLista;
     }
 
     private ImageIcon imagenLabel(String direccion){
@@ -38,27 +45,30 @@ public class ModProd extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
+        jOptionPane1 = new javax.swing.JOptionPane();
         jPanel1 = new javax.swing.JPanel();
         imgLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        desc = new javax.swing.JTextArea();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        precio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        cantidad = new javax.swing.JTextField();
         ID = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        ruta = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         imgLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -66,10 +76,10 @@ public class ModProd extends javax.swing.JFrame {
 
         jLabel3.setText("Descripción");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        desc.setColumns(20);
+        desc.setLineWrap(true);
+        desc.setRows(5);
+        jScrollPane1.setViewportView(desc);
 
         jToggleButton1.setText("CANCELAR");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,16 +95,26 @@ public class ModProd extends javax.swing.JFrame {
         jLabel6.setText("IDENTIFICADOR");
 
         jButton3.setText("BUSCAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        ruta.setEditable(false);
+        ruta.setColumns(20);
+        ruta.setLineWrap(true);
+        ruta.setRows(5);
+        jScrollPane2.setViewportView(ruta);
 
         jLabel1.setText("Ruta de la imagen");
 
         jButton4.setText("MODIFICAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,10 +127,10 @@ public class ModProd extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(imgLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
+                    .addComponent(nombre)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -130,7 +150,7 @@ public class ModProd extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(precio, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -143,7 +163,7 @@ public class ModProd extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(imgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -161,9 +181,9 @@ public class ModProd extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton1)
@@ -197,6 +217,30 @@ public class ModProd extends javax.swing.JFrame {
         volver.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jFileChooser1.setDialogTitle("CARGAR UNA IMAGEN");
+        jFileChooser1.setFileFilter(imagenes);
+        int caso = jFileChooser1.showSaveDialog(null);
+        if (caso == jFileChooser1.APPROVE_OPTION) {
+            File seleccion = jFileChooser1.getSelectedFile();
+            String direccion = seleccion.getAbsolutePath();
+            ruta.setText(direccion);
+            imgLabel.setIcon(imagenLabel(direccion));
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Producto nuevo = new Producto(ID.getText(),nombre.getText(),
+                desc.getText(),precio.getText(),cantidad.getText(),
+                ruta.getText()
+        );
+        principal.productos.modificar(numLista, nuevo);
+        jOptionPane1.showMessageDialog(this, "PRODUCTO MODIFICADO");
+        VerProd volver = new VerProd();
+        this.dispose();
+        volver.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,30 +272,32 @@ public class ModProd extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModProd("","","","","","").setVisible(true);
+                new ModProd("","","","","","",0).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ID;
+    private javax.swing.JTextField cantidad;
+    private javax.swing.JTextArea desc;
     private javax.swing.JLabel imgLabel;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField precio;
+    private javax.swing.JTextArea ruta;
     // End of variables declaration//GEN-END:variables
 }

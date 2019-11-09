@@ -35,8 +35,10 @@ public class CircularSimp<tipo> {
         }
     }
     
-    public void eliminar(int indice){
+    public tipo pasar (int indice){
+        tipo elemento = null;
         if (elementos == 1){
+            elemento = inicio.contenido();
             reiniciar();
         }
         else if (indice == 1 && elementos != 1){
@@ -48,6 +50,7 @@ public class CircularSimp<tipo> {
             }
             iterador.apuntar(inicio);
             elementos--;
+            elemento = viejo.contenido();
         }
         else {
             Nodo<tipo> iterador = inicio;
@@ -56,8 +59,38 @@ public class CircularSimp<tipo> {
                     iterador = iterador.siguiente();
                     contador++;
             }
+            elemento = iterador.siguiente().contenido();
             iterador.apuntar(iterador.siguiente().siguiente());
             elementos--;
+        }
+        return elemento;
+    }
+    
+    public void modificar (int indice, tipo nuevo){
+        if (elementos == 1){
+            reiniciar();
+            nuevo(nuevo);
+        }
+        else if (indice == 1 && elementos != 1){
+            Nodo<tipo> viejo = inicio;
+            Nodo<tipo> iterador = viejo;
+            inicio = new Nodo<tipo>(nuevo);
+            inicio.apuntar(viejo.siguiente());
+            while(iterador.siguiente() != viejo){
+                iterador = iterador.siguiente();
+            }
+            iterador.apuntar(inicio);
+        }
+        else {
+            Nodo<tipo> iterador = inicio;
+            int contador = 1;
+            while(contador < indice - 1){
+                    iterador = iterador.siguiente();
+                    contador++;
+            }
+            Nodo<tipo> mod = new Nodo<tipo>(nuevo);
+            mod.apuntar(iterador.siguiente().siguiente());
+            iterador.apuntar(mod);
         }
     }
     
