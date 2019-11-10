@@ -67,6 +67,7 @@ private int numero;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jOptionPane1 = new javax.swing.JOptionPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -174,9 +175,14 @@ private int numero;
     }// </editor-fold>//GEN-END:initComponents
  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        VntProd volver = new VntProd();
-        this.dispose();
-        volver.setVisible(true);
+        if(numero != 0){
+            jOptionPane1.showMessageDialog(this, "QUEDAN PRODUCTOS POR ELIMINAR");
+        }
+        else{
+            MenuProd volver = new MenuProd();
+            this.dispose();
+            volver.setVisible(true);
+        } 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -198,10 +204,13 @@ private int numero;
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        eliminar.reiniciar();
-        llenarTabla(modelo2,eliminar.cabeza());
-        numero = 0;
-        jButton2.setText("ELIMINAR ( " + numero + " )");
+        if(numero != 0){
+            eliminar.reiniciar();
+            llenarTabla(modelo2,eliminar.cabeza());
+            jOptionPane1.showMessageDialog(this, numero + " PRODUCTOS ELIMINADOS CORRECTAMENTE");
+            numero = 0;
+            jButton2.setText("ELIMINAR ( " + numero + " )");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -245,6 +254,7 @@ private int numero;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

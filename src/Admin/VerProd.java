@@ -131,22 +131,22 @@ private DefaultTableModel modelo;
     }// </editor-fold>//GEN-END:initComponents
  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        VntProd volver = new VntProd();
+        MenuProd volver = new MenuProd();
         this.dispose();
         volver.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int numtabla = jTable1.getSelectedRow();
+        int numtabla = jTable1.getSelectedRow() + 1;
         if(numtabla != -1){
             
-            Producto prod = principal.buscarProd(numtabla + 1);
+            Producto prod = principal.productos.indice(numtabla);
             String nombre = prod.getNombre(); String desc = prod.getDesc();
             String precio = prod.getPrecio(); String exist = prod.getExistencia();
             String ID = prod.getID();
             String ruta = prod.getRutaImg();
             DetalleProd ver;
-            ver = new DetalleProd(nombre, desc, precio, exist, ruta,ID,numtabla + 1);
+            ver = new DetalleProd(nombre, desc, precio, exist, ruta,ID,numtabla);
             this.dispose();
             ver.setVisible(true);
         }
