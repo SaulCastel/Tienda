@@ -31,8 +31,42 @@ public class ListaSimple<tipo> {
         }
         elementos++;
     }
+    
+    public void nuevo (Nodo<tipo> dato){
+        if (inicio == null){
+            inicio = dato;
+        }
+        else{
+            Nodo<tipo> temporal = inicio;
+            inicio = dato;
+            inicio.apuntar(temporal);
+        }
+        elementos++;
+    }
+    
     public Nodo<tipo> cabeza (){
         return inicio;
     }
     
+    /*public void afterIndice (tipo dato, int numero){
+        Nodo<tipo> iterador = inicio;
+        int contador = 1;
+        while(contador < numero){
+            iterador = iterador.siguiente();
+            contador++;
+        }
+        Nodo<tipo> nuevo = new Nodo<tipo>(dato);
+        nuevo.apuntar(iterador.siguiente());
+        iterador.apuntar(nuevo);
+        elementos++;
+    }*/
+    
+    public void elimf (){
+        Nodo<tipo> iterador = inicio;
+        while (iterador.siguiente().siguiente() == null){
+            iterador = iterador.siguiente();
+        }
+        iterador.apuntar(null);
+        elementos--;
+    }
 }

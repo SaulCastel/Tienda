@@ -12,11 +12,18 @@ package Estructuras;
 public class Nodo<tipo> {
     private tipo dato;
     private Nodo<tipo> puntero;
+    private String prioridad;
     
     public Nodo (tipo dato){
         this.dato = dato;
         puntero = null;
     }
+    
+   public Nodo (tipo dato, boolean prioridad){
+       this.dato = dato;
+       puntero = null;
+       this.prioridad = (prioridad)? "Alta" : "Baja";
+   }
     
     public Nodo<tipo> siguiente (){return puntero;}
     
@@ -24,5 +31,9 @@ public class Nodo<tipo> {
     
     public void apuntar (Nodo<tipo> puntero){
         this.puntero = puntero;
+    }
+    
+    public String prioridad (){
+        return prioridad;
     }
 }

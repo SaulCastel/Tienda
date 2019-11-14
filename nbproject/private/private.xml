@@ -5,7 +5,10 @@
         <group>
             <file>file:/home/saul/NetBeansProjects/Tienda/src/Admin/MenuAdmin.java</file>
             <file>file:/home/saul/NetBeansProjects/Tienda/src/tienda/Tienda.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Estructuras/ColaP.java</file>
             <file>file:/home/saul/NetBeansProjects/Tienda/src/Estructuras/CircularSimp.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Estructuras/Nodo.java</file>
+            <file>file:/home/saul/NetBeansProjects/Tienda/src/Estructuras/Cola.java</file>
             <file>file:/home/saul/NetBeansProjects/Tienda/src/Estructuras/ListaSimple.java</file>
             <file>file:/home/saul/NetBeansProjects/Tienda/src/Admin/MenuProd.java</file>
         </group>
