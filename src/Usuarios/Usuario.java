@@ -22,6 +22,9 @@ public class Usuario {
         this.usuario = usario;
         tarjeta = TC;
     }
+    
+    public Usuario(){
+    }
 
     public String getNombre() {
         return nombre;
@@ -42,7 +45,11 @@ public class Usuario {
     public String getContra() {
         return contra;
     }
-
+    
+    public TCredito getTCredito (){
+        return tarjeta;
+    }
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

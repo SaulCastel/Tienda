@@ -18,13 +18,27 @@ import tienda.Tienda;
  *
  * @author Saul
  */
-public class Registro extends javax.swing.JFrame {
+public class ModUser extends javax.swing.JFrame {
 
     private Tienda principal = new Tienda();
+    private Usuario user;
+    private String OGUser, OGEmail;
+    private Usuario nuevo;
 
-    public Registro() {
+    public ModUser(String nombres, String apellidos, String correo,
+            String usuario, String contra, String tarjeta, String cvc,
+            String vencimiento, Usuario user) {
         initComponents();
         setLocationRelativeTo(null);
+        OGUser = usuario;
+        OGEmail = correo;
+        this.nombres.setText(nombres);
+        this.apellidos.setText(apellidos);
+        this.correo.setText(OGEmail);
+        this.usuario.setText(OGUser);
+        this.contra.setText(contra);
+        this.user = user;
+        nuevo = user;
         MaskFormatter formatoT;
         MaskFormatter formatoCVC;
         MaskFormatter formatoF;
@@ -32,13 +46,15 @@ public class Registro extends javax.swing.JFrame {
             formatoT = new MaskFormatter("####-####-####-####");
             formatoCVC = new MaskFormatter("###");
             formatoF = new MaskFormatter("##/##/####");
-            formatoT.install(tarjeta);
-            formatoCVC.install(cvc);
-            formatoF.install(vencimiento);
+            formatoT.install(this.tarjeta);
+            formatoCVC.install(this.cvc);
+            formatoF.install(this.vencimiento);
         } catch (ParseException ex) {
-            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModUser.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        this.tarjeta.setText(tarjeta);
+        this.cvc.setText(cvc);
+        this.vencimiento.setText(vencimiento);
     }
 
     /**
@@ -90,14 +106,14 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel8.setText("CVC");
 
-        jButton1.setText("REGISTRAR");
+        jButton1.setText("GUARDAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("VOLVER");
+        jButton2.setText("CANCELAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -222,9 +238,9 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Login volver = new Login();
+        MenuTienda tienda = new MenuTienda(user);
         this.dispose();
-        volver.setVisible(true);
+        tienda.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -234,10 +250,12 @@ public class Registro extends javax.swing.JFrame {
                 || contra.getText().equals("") || tarjeta.getText().equals("")
                 || cvc.getText().equals("") || vencimiento.getText().equals("")) {
             jOptionPane1.showMessageDialog(this, "DEBES INGRESAR TODOS LOS CAMPOS");
-        } else {
+        } else if (!usuario.getText().equals(OGUser) || !correo.getText().equals(OGEmail)) {
             Nodo<Usuario> iterador = principal.usuarios.cabeza();
             while (iterador != null) {
-                if (iterador.contenido().getUsuario().equals(usuario.getText())) {
+                if (iterador.contenido() == user) {
+                    iterador = iterador.siguiente();
+                } else if (iterador.contenido().getUsuario().equals(usuario.getText())) {
                     jOptionPane1.showMessageDialog(this, "USUARIO YA EXISTE");
                     usuario.setText("");
                     iterador = null;
@@ -247,23 +265,27 @@ public class Registro extends javax.swing.JFrame {
                     correo.setText("");
                     iterador = null;
                     copia = true;
-                } else {
+                }
+                else {
                     iterador = iterador.siguiente();
                 }
             }
-            if (!copia) {
-                String[] datos = vencimiento.getText().split("/");
-                Fecha fecha = new Fecha(Integer.parseInt(datos[0]),
-                        Integer.parseInt(datos[1]), Integer.parseInt(datos[2]));
-                TCredito TC
-                        = new TCredito(tarjeta.getText(), Integer.parseInt(cvc.getText()),
-                                fecha);
-                Usuario nuevo
-                        = new Usuario(nombres.getText(), apellidos.getText(),
-                                correo.getText(), usuario.getText(), contra.getText(), TC);
-                principal.nuevoUser(nuevo);
-                jOptionPane1.showMessageDialog(this, "NUEVO USUARIO REGISTRADO");
-            }
+        }
+        if (!copia) {
+            System.out.println("ENTRE");
+            String[] datos = vencimiento.getText().split("/");
+            Fecha fecha = new Fecha(Integer.parseInt(datos[0]),
+                    Integer.parseInt(datos[1]), Integer.parseInt(datos[2]));
+            TCredito TC
+                    = new TCredito(tarjeta.getText(), Integer.parseInt(cvc.getText()),
+                            fecha);
+            nuevo = new Usuario(nombres.getText(), apellidos.getText(),
+                    correo.getText(), usuario.getText(), contra.getText(), TC);
+            principal.usuarios.modificar(user, nuevo);
+            jOptionPane1.showMessageDialog(this, "USUARIO MODIFICADO CORRECTAMENTE");
+            MenuTienda tienda = new MenuTienda(nuevo);
+            this.dispose();
+            tienda.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -284,20 +306,21 @@ public class Registro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registro().setVisible(true);
+                new ModUser("", "", "", "", "", "", "", "", new Usuario()).setVisible(true);
             }
         });
     }
