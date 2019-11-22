@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Tienda {
-    private static String rutaProd = "C:/Users/Saul/Desktop/Productos/Productos.proadd";
+    private static String rutaProd = "Ningun Archivo";
     public static CircularSimp<Producto> productos = new CircularSimp();
     public static ListaSimple<Usuario> usuarios = new ListaSimple();
     private static FileReader archivo;

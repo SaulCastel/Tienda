@@ -5,6 +5,9 @@
  */
 package Usuarios;
 
+import Estructuras.CircularDob;
+import tienda.Producto;
+
 /**
  *
  * @author Saul
@@ -12,7 +15,7 @@ package Usuarios;
 public class Usuario {
     private String nombre,apellido,correo,usuario,contra;
     private TCredito tarjeta; 
-    //añadir tipo de cliente
+    private CircularDob<Producto> carrito;
     
     public Usuario(String nombre,String apellido,String correo,String usario,String contra, TCredito TC){
         this.nombre = nombre;
@@ -21,6 +24,11 @@ public class Usuario {
         this.contra = contra;
         this.usuario = usario;
         tarjeta = TC;
+        carrito = new CircularDob();
+    }
+
+    public CircularDob<Producto> getCarrito() {
+        return carrito;
     }
     
     public Usuario(){
